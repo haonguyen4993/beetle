@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { connect } from "react-redux";
+
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { ThemeProvider } from "@material-ui/styles";
+
+import SignIn from "./views/SignIn";
+import Dashboard from "./views/Dashboard";
+import theme from "./theme";
+
+class App extends React.Component {
+	renderContent() {
+		if (this.props.isSignedIn) {
+			return <Dashboard />
+		} else {
+			return <SignIn />
+		}
+	}
+
+	render() {
+		return (
+			<React.Fragment>
+				<CssBaseline />
+				<ThemeProvider theme={theme}>
+					{this.renderContent()}
+				</ThemeProvider>
+			</React.Fragment>
+		);
+	}
 }
 
-export default App;
+const mapStateToProps = (state) => {
+	return {
+		isSignedIn: state.auth.isSignedIn
+	};
+}
+
+export default connect(
+	mapStateToProps
+)(App);
