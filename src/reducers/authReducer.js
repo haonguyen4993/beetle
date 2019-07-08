@@ -2,13 +2,13 @@ import * as ActionTypes from "../actions/types";
 import { handleActions } from "redux-actions";
 
 const INITIAL_STATE = {
-	isSignedIn: true,
-	userId: null
+	isAuthented: null,
+	accessToken: ""
 };
 
 export default handleActions(
 	{
-		[ActionTypes.SIGN_IN]: (state, action) => ({ ...state, isSignedIn: true, userId: action.payload })
+		[ActionTypes.SIGN_IN]: (state, action) => ({ ...state, isAuthented: !!action.payload.accessToken.length, accessToken: action.payload })
 	},
 	INITIAL_STATE
 );

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { connect } from "react-redux";
-import { signIn } from "../../actions";
+import { callSignIn } from "../../actions/auth";
 
 import { withStyles } from '@material-ui/core';
 import Grid from "@material-ui/core/Grid";
@@ -19,7 +19,7 @@ import styles from "./styles";
 class SignIn extends React.Component {
 	onSignInClick = (event) => {
 		event.preventDefault();
-		this.props.signIn(1);
+		this.props.callSignIn();
 	}
 
 	render() {
@@ -43,6 +43,7 @@ class SignIn extends React.Component {
 									id="email"
 									label="Email"
 									name="email"
+									value="admin"
 									autoFocus
 								/>
 								<TextField
@@ -53,6 +54,7 @@ class SignIn extends React.Component {
 									id="password"
 									label="Password"
 									name="password"
+									value="One23456!"
 									type="password"
 								/>
 								<FormControlLabel
@@ -88,5 +90,5 @@ class SignIn extends React.Component {
 // export default withStyles(styles)(SignIn);
 export default connect(
 	null,
-	{ signIn }
+	{ callSignIn }
 )(withStyles(styles)(SignIn));
