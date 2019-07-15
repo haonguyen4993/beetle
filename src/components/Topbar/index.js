@@ -1,50 +1,64 @@
 import React from "react";
 
 import {
-	IconButton,
 	Toolbar,
-	Typography
+	Typography,
+	AppBar,
+	Link
 } from "@material-ui/core";
 
 import {
-	Menu as MenuIcon,
-	Close as CloseIcon,
+	SearchOutlined as SearchIcon,
+	ShoppingBasketOutlined as ShoppingBasketIcon,
+	Menu as MenuIcon
+
 } from "@material-ui/icons";
 
 import { withStyles } from "@material-ui/core";
 import styles from "./styles";
 
 class Topbar extends React.Component {
-	state = {
-		isSidebarOpen: true
-	};
-
-	toggleSidebar = () => {
-		this.setState({
-			isSidebarOpen: !this.state.isSidebarOpen
-		});
-	}
-
 	render() {
 		const { classes } = this.props;
 
 		return (
 			<div className={classes.topbar}>
-				<Toolbar className={classes.toolbar}>
-					<IconButton
-						className={classes.menuButton}
-						variant="text"
-						onClick={this.toggleSidebar}
-					>
-						{ this.state.isSidebarOpen ? <CloseIcon /> : <MenuIcon /> }
-					</IconButton>
-					<Typography
-						className={classes.title}
-						variant="h4"
-					>
-						Dashboard
-					</Typography>
-				</Toolbar>
+				<AppBar className={classes.appbar} position="static" color="default">
+					<Toolbar className={classes.toolbar}>
+						<div className={classes.logoWrapper}>
+							<a href="/" className={classes.logoLink}>
+								<img
+									alt="Beetle logo"
+									className={classes.logoImage}
+									src="images/logo.png"
+								/>
+							</a>
+						</div>
+						<nav>
+	            <Link
+	            	variant="button"
+	            	color="textPrimary"
+	            	href="#"
+	            	className={classes.link}>
+	              <SearchIcon />
+	            </Link>
+	            <Link
+	            	variant="button"
+	            	color="textPrimary"
+	            	href="#"
+	            	className={classes.link}>
+	              <ShoppingBasketIcon />
+	            </Link>
+	            <Link
+	            	variant="button"
+	            	color="textPrimary"
+	            	href="#"
+	            	className={classes.link}>
+	              <MenuIcon />
+	            </Link>
+	          </nav>
+					</Toolbar>
+				</AppBar>
 			</div>
 		);
 	}

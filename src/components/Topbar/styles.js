@@ -1,21 +1,24 @@
 export default theme => ({
 	topbar: {
-		borderBottom: `1px solid ${theme.palette.border}`,
+	},
+	appbar: {
 		backgroundColor: theme.palette.common.white,
-		display: 'flex',
-		alignItems: 'center',
-		height: '64px',
-		width: 'calc(-270px + 100vw)',
-		marginLeft: '270px'
+		boxShadow: 'none',
 	},
-	toolbar: {
-		minHeight: 'auto',
-		width: '100%'
+	logoWrapper: {
+		padding: '0 2rem',
+		flexGrow: '1',
+
 	},
-	title: {
-		// marginLeft: theme.spacing.unit
+	logoLink: {
+
 	},
-	menuButton: {
-		marginLeft: '-4px'
+	logoImage: {
+		cursor: 'pointer',
+		width: '80px',
+		height: 'auto',
+	},
+	link: {
+		margin: theme.spacing(1, 1.5),
 	}
 });

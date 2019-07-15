@@ -2,8 +2,8 @@ import React from "react";
 
 import { Drawer } from "@material-ui/core";
 
-import Topbar from "../../components/Topbar";
-import Sidebar from "../../components/Sidebar";
+import Topbar from "../../components/AdminTopbar";
+import Sidebar from "../../components/AdminSidebar";
 
 class Dashboard extends React.Component {
 	render() {

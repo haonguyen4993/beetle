@@ -20,7 +20,7 @@ import {
 import { withStyles } from "@material-ui/core";
 import styles from "./styles";
 
-class Sidebar extends React.Component {
+class AdminSidebar extends React.Component {
 	render() {
 		const { classes } = this.props;
 		return (
@@ -112,4 +112,4 @@ class Sidebar extends React.Component {
 	}
 }
 
-export default withStyles(styles)(Sidebar);
+export default withStyles(styles)(AdminSidebar);

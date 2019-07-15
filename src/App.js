@@ -7,6 +7,7 @@ import { ThemeProvider } from "@material-ui/styles";
 
 import SignIn from "./views/SignIn";
 import Dashboard from "./views/Dashboard";
+import HomePage from "./views/HomePage";
 import theme from "./theme";
 
 class App extends React.Component {
@@ -14,7 +15,7 @@ class App extends React.Component {
 		if (this.props.isSignedIn) {
 			return <Dashboard />
 		} else {
-			return <SignIn />
+			return <HomePage />
 		}
 	}
 
