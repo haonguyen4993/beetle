@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 
 export default handleActions(
 	{
-		[ActionTypes.SIGN_IN]: (state, action) => ({ ...state, isAuthented: !!action.payload.accessToken.length, accessToken: action.payload })
+		[ActionTypes.SIGN_IN]: (state, action) => ({ ...state, isAuthented: !!action.payload.access_token.length, accessToken: action.payload.access_token })
 	},
 	INITIAL_STATE
 );

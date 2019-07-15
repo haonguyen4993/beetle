@@ -1,10 +1,16 @@
-import { all, call, put, takeLatest, select } from "redux-saga/effects";
+import { all, call, put, takeLatest } from "redux-saga/effects";
 import auth from "../apis/auth";
 import { SIGN_IN } from "../actions/types";
-import history from "history";
+// import history from "history";
 
-function* signIn() {
-	const response = yield call(auth.post, "/oauth/token", { params: { grant_type: "password", username: "admin", password: "One23456!" }});
+const getFormData = (object) => {
+  const formData = new FormData();
+  Object.keys(object).forEach(key => formData.append(key, object[key]));
+  return formData;
+}
+
+function* signIn(action) {
+	const response = yield call(auth.post, "/oauth/token", getFormData({ ...action.payload, grant_type: "password" }));
 	yield put({
 		type: SIGN_IN,
 		payload: response.data

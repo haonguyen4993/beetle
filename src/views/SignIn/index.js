@@ -7,19 +7,16 @@ import { withStyles } from '@material-ui/core';
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
 import Avatar from "@material-ui/core/Avatar";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import Button from "@material-ui/core/Button";
 
 import styles from "./styles";
 
+import SignInForm from "./SignInForm";
+
 
 class SignIn extends React.Component {
-	onSignInClick = (event) => {
-		event.preventDefault();
-		this.props.callSignIn();
+	onSignInClick = (formValues) => {
+		this.props.callSignIn(formValues);
 	}
 
 	render() {
@@ -34,44 +31,9 @@ class SignIn extends React.Component {
 							<Typography component="h1" variant="h5">
 								Login
 							</Typography>
-							<form className={classes.form} noValidate>
-								<TextField
-									variant="outlined"
-									margin="normal"
-									required
-									fullWidth
-									id="email"
-									label="Email"
-									name="email"
-									value="admin"
-									autoFocus
-								/>
-								<TextField
-									variant="outlined"
-									margin="normal"
-									required
-									fullWidth
-									id="password"
-									label="Password"
-									name="password"
-									value="One23456!"
-									type="password"
-								/>
-								<FormControlLabel
-									control={<Checkbox value="remember" color="primary" />}
-									label="Remember me"
-								/>
-								<Button
-									type="submit"
-									fullWidth
-									variant="contained"
-									color="primary"
-									className={classes.submit}
-									onClick={this.onSignInClick}
-								>
-									Login
-								</Button>
-							</form>
+							<SignInForm
+								onSubmit={this.onSignInClick}
+							/>
 						</div>
 					</Grid>
 					<Grid item xs={false} md={7} className={classes.image} />
@@ -81,13 +43,6 @@ class SignIn extends React.Component {
 	}
 }
 
-// const mapStateToProps = (state) => {
-// 	return {
-// 		isSignedIn: state.auth.isSignedIn
-// 	}
-// }
-
-// export default withStyles(styles)(SignIn);
 export default connect(
 	null,
 	{ callSignIn }
